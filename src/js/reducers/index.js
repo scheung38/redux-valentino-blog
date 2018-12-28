@@ -7,8 +7,10 @@ const initialState = {
 // To determine how to calculate  the next state
 function rootReducer(state = initialState, action) {
 
-    // Does nothing, simply default to returning the state
-
+    // Mutates object
+    if (action.type === ADD_ARTICLE) {
+        state.articles.push(action.payload);
+    }
     return state;
 }
 
