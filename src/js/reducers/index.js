@@ -7,9 +7,11 @@ const initialState = {
 // To determine how to calculate  the next state
 function rootReducer(state = initialState, action) {
 
-    // Mutates object
+    // Changed to immutable object
     if (action.type === ADD_ARTICLE) {
-        state.articles.push(action.payload);
+        return Object.assign({}, state, {
+            articles: state.articles.concat(action.payload)
+        });
     }
     return state;
 }
